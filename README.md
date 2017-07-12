@@ -1,24 +1,61 @@
-# README
+# DB設計
+---
+## users_table
+---
+|column                 |type     |options                                |
+|:---------------------:|:-------:|:-------------------------------------:|
+|id                     |integer  |null: false                            |
+|name                   |string   |index: true, null: false, unique: true |
+|e-mail                 |stirng   |null false                             |
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Association
 
-Things you may want to cover:
+- has_many :groups, through: groups_users
 
-* Ruby version
+- has_many :messages
 
-* System dependencies
+- has_many :groups_users
 
-* Configuration
+## groups_table
+---
+|column     |type     |options                   |
+|:---------:|:-------:|:------------------------:|
+|id         |integer  |null: false               |
+|name       |string   |null: false, unique: true |
+|updated_at |datetime |null: false               |
 
-* Database creation
+## Association
 
-* Database initialization
+- has_many :users, through: groups_users
 
-* How to run the test suite
+- has_many :messages
 
-* Services (job queues, cache servers, search engines, etc.)
+- has_many :groups_users
 
-* Deployment instructions
+## groups_users_table
+---
+|column   |type         |options                       |
+|:-------:|:-----------:|:----------------------------:|
+|user_id  |t.references |null: false, foreign_key: true|
+|group_id |t.references |null: false, foreign_key: true|
 
-* ...
+## Association
+
+- belongs_to :user
+
+- belongs_to :group
+
+## messages_table
+---
+|column   |type    |options                       |
+|:-------:|:------:|:----------------------------:|
+|body     |text    |                              |
+|image    |string  |                              |
+|user_id  |integer |null :false, foreign_key: true|
+|group_id |integer |null :false, foreign_key: true|
+
+## Association
+
+- belongs_to :user
+
+- belongs_to :group
