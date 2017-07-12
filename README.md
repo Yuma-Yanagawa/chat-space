@@ -31,3 +31,16 @@
 - has_many :messages
 
 - has_many :groups_users
+
+## groups_users_table
+---
+|column   |type         |options                       |
+|:-------:|:-----------:|:----------------------------:|
+|user_id  |t.references |null: false, foreign_key: true|
+|group_id |t.references |null: false, foreign_key: true|
+
+## Association
+
+- belongs_to :user
+
+- belongs_to :group
