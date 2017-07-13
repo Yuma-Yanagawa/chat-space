@@ -1,0 +1,56 @@
+%header
+  .header
+    .header__flashmessage
+      %p チャットグループが作成されました。
+    .header__sidebar
+      .header__sidebar__lists
+        %h3.header__sidebar__lists-name
+          yuma
+        %ul.header__sidebar__lists-icons
+          %li.header__sidebar__lists-icons-list
+            = link_to '' do
+              %i.fa.fa-pencil-square-o
+            = link_to '' do
+              %i.fa.fa-cog
+    .header__chat
+      .header__chat__left
+        .header__chat__left__title
+          %h2 test
+          %ul.header__chat__left__title__members
+            Member :
+            %li.header__chat__left__title__members-member
+              yuma
+      .header__chat__right
+        = link_to '', class: 'header__chat__right__button' do
+          %p Edit
+%main
+  .main
+    .main__sidebar
+      .main__sidebar__group
+        = link_to '' do
+        .main__sidebar__group-name
+          test
+        .main__sidebar__group-message
+          test1
+    .main__chat
+      .main__chat__messages
+        .main__chat__messages__body
+          .main__chat__messages__body-user-name
+            yuma
+          .main__chat__messages__body-date
+            2017/07/10 11:00
+          %p.main__chat__messages__body-content
+            test1
+%footer
+  .footer
+    .footer__sidebar
+    .footer__chat
+      .footer__chat__form
+        %form.footer__chat__form__js-form{action: "", method: "post"}
+          %input.footer__chat__form__js-form__message{type: "text", name: "message[content]",  placeholder: "  type a message"}
+          .footer__chat__form__js-form__mask
+            .footer__chat__form__js-form__mask__image{for: "message_image"}
+              %label.footer__chat__form__js-form__mask__image{for: "message_image"}
+                %i.fa.fa-picture-o.icon
+                %input.hidden.js-file#message_image{type: "file", name: "message[image]"}
+              %input.footer__chat__form__js-form__mask__image__submit{type: "submit", name: "commit", value: "Send"}

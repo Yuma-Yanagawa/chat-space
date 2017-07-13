@@ -1,0 +1,46 @@
+.footer {
+  &__sidebar {
+    background-color: $mainSidebarColor;
+    float: left;
+    height: 90px;
+    width: 300px;
+  }
+  &__chat {
+    background-color: #ddd;
+    float: left;
+    height: 90px;
+    width: calc(100vw - 300px);
+    &__form{
+      height: 50px;
+      margin: 20px 40px;
+      &__js-form {
+        position: absolute;
+        .footer__chat__form__js-form__message {
+          float: left;
+          height: 50px;
+          width: calc(100vw - 300px - 80px - 100px); //画面max - sidebar - chatの余白×2 - Submitボタン
+        }
+        &__mask__image {
+          .fa.fa-picture-o.icon {
+            position: absolute;
+            top: 15px;
+            left: 1170px;
+            font-size: 20px;
+          }
+          .hidden.js-file{
+            display: none;
+          }
+          &__submit {
+            background-color: $mainBlueColor;
+            border: none;
+            color: $mainWhiteColor;
+            height: 55px;
+            width: 100px;
+            position: absolute;
+            left: 1215px;
+          }
+        }
+      }
+    }
+  }
+}

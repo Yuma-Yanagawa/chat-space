@@ -1,0 +1,8 @@
+@import "config/variable";
+@import "./reset";
+@import "font-awesome";
+
+// index.html.hamlに対するscss
+@import "./header";
+@import "./main";
+@import "./footer";
