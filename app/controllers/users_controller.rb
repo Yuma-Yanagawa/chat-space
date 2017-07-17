@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Users::RegistrationsController < Devise::RegistrationsController
 
   def edit
   end
@@ -12,4 +12,9 @@ class UsersController < ApplicationController
    params.require(:user).permit(:name, :email)
   end
 
+  protected
+
+  def update_resource(resource, params)
+    resource.update_without_current_password(params)
+  end
 end
