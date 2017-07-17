@@ -6,7 +6,7 @@
           yuma
         %ul.header__sidebar__lists-icons
           %li.header__sidebar__lists-icons-list
-            = link_to '/groups/new' do
+            = link_to new_group_path do
               %i.fa.fa-pencil-square-o
             = link_to edit_user_registration_path do
               %i.fa.fa-cog
@@ -19,7 +19,7 @@
             %li.header__chat__left__title__members-member
               yuma
       .header__chat__right
-        = link_to '/groups/:id/edit', class: 'header__chat__right__button' do
+        = link_to edit_group_path, class: 'header__chat__right__button' do
           %p Edit
 %main
   .main
