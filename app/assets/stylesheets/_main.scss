@@ -6,11 +6,19 @@
     width: 300px;
     &__group {
       color: $mainWhiteColor;
+      a {
+        text-decoration: none;
+      }
+      a:visited {
+        color:  $mainWhiteColor;
+      }
       &-name {
+        color: $mainWhiteColor;
         font-size: 15px;
         margin: 20px 20px 5px;
       }
       &-message {
+        color: $mainWhiteColor;
         font-size: 11px;
         margin: 0px 20px 40px;
       }
