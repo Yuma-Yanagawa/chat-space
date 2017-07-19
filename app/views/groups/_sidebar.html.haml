@@ -1,0 +1,22 @@
+.header
+  .header__sidebar
+    .header__sidebar__lists
+      %h3.header__sidebar__lists-name
+        = current_user.name
+      %ul.header__sidebar__lists-icons
+        %li.header__sidebar__lists-icons-list
+          = link_to new_group_path do
+            %i.fa.fa-pencil-square-o
+          = link_to edit_user_registration_path(current_user.groups) do
+            %i.fa.fa-cog
+  .header__chat
+    .header__chat__left
+.main
+  .main__sidebar
+    = render @groups
+  .main__chat
+    .main__chat__messages
+      .main__chat__messages__body
+.footer
+  .footer__sidebar
+  .footer__chat-group
