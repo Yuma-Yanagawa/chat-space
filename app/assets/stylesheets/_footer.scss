@@ -5,6 +5,12 @@
     height: 90px;
     width: 300px;
   }
+  &__chat-group {
+    background-color: $mainWhiteColor;
+    float: left;
+    height: 90px;
+    width: calc(100vw - 300px);
+  }
   &__chat {
     background-color: #ddd;
     float: left;

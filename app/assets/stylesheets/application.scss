@@ -2,7 +2,7 @@
 @import "./reset";
 @import "font-awesome";
 
-// index.html.hamlに対するscss
+// 各index.html.hamlに対するscss
 @import "./header";
 @import "./main";
 @import "./footer";
@@ -12,3 +12,6 @@
 
 //flash_messagesのscss
 @import "./flash";
+
+//新規グループ登録画面のscss
+@import "./group";
