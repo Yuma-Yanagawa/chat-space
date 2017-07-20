@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root 'groups#index'
-  resources :messages, only: [:index]
-  resources :groups, only: [:index, :new, :create, :edit, :update]
-  get 'groups/1/edit' => 'groups#edit'
+  resources :groups, only: [:index, :new, :create, :edit, :update] do
+    resources :messages, only: [:index]
+  end
 end

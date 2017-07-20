@@ -8,18 +8,19 @@
           %li.header__sidebar__lists-icons-list
             = link_to new_group_path do
               %i.fa.fa-pencil-square-o
-            = link_to edit_user_registration_path(current_user.groups) do
+            = link_to edit_user_registration_path do
               %i.fa.fa-cog
     .header__chat
       .header__chat__left
         .header__chat__left__title
-          %h2 test
+          %h2
+            = @group.name
           %ul.header__chat__left__title__members
             Member :
             %li.header__chat__left__title__members-member
-              yuma
+              = current_user.name
       .header__chat__right
-        = link_to edit_group_path(current_user.groups), class: 'header__chat__right__button' do
+        = link_to edit_group_path(@group), class: 'header__chat__right__button' do
           %p Edit
 %main
   .main

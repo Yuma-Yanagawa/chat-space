@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
 
   def index
-    @groups = Group.all
+    @groups = current_user.groups
   end
 
   def new
@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      redirect_to messages_path, notice: "グループを作成しました"
+      redirect_to group_messages_path(@group), notice: "グループを作成しました"
     else
       flash.now[:alert] = "グループ名を入力してください"
       render :new
@@ -19,16 +19,17 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @group = Group.find(1)
+    @group = Group.find(params[:id])
   end
 
   def update
-    group = Group.find(1)
-    if group.update(group_params), notice: "グループを更新しました"
-      render :index
+    @group = Group.find(params[:id])
+    if @group.update(group_params)
+      redirect_to group_messages_path(@group), notice: "グループを更新しました"
     else
       flash.now[:alert] = "グループ名を入力してください"
       render :edit
+    end
   end
 
   private
