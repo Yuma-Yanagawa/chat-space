@@ -24,8 +24,11 @@ class GroupsController < ApplicationController
 
   def update
     group = Group.find(1)
-    group.update(group_params)
-    redirect_to messages_path
+    if group.update(group_params), notice: "グループを更新しました"
+      render :index
+    else
+      flash.now[:alert] = "グループ名を入力してください"
+      render :edit
   end
 
   private
