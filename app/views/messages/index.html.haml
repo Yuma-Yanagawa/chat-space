@@ -35,16 +35,13 @@
             2017/07/10 11:00
           %p.main__chat__messages__body-content
             test1
-%footer
-  .footer
-    .footer__sidebar
-    .footer__chat
-      .footer__chat__form
-        %form.footer__chat__form__js-form{action: "", method: "post"}
-          %input.footer__chat__form__js-form__message{type: "text", name: "message[content]",  placeholder: "  type a message"}
-          .footer__chat__form__js-form__mask
-            .footer__chat__form__js-form__mask__image{for: "message_image"}
-              %label.footer__chat__form__js-form__mask__image{for: "message_image"}
-                %i.fa.fa-picture-o.icon
-                %input.hidden.js-file#message_image{type: "file", name: "message[image]"}
-              %input.footer__chat__form__js-form__mask__image__submit{type: "submit", name: "commit", value: "Send"}
+            -# = image_tag @message.image_url(:thumb)
+.footer__sidebar
+  .footer__chat
+    .footer__chat__form
+    = form_for [@group, @message], html: {class: "footer__chat__form__js-form"} do |f|
+      = f.text_field :body, class: "footer__chat__form__js-form__message", placeholder: "  type a message"
+      %label.footer__chat__form__js-form__mask__image
+        = f.file_field :image, class: "hidden js-file", id: "message_image"
+        %i.fa.fa-picture-o.icon
+        = f.submit 'Send', class: "footer__chat__form__js-form__mask__image__submit"
