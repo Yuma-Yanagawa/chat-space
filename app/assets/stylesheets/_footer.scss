@@ -25,6 +25,7 @@
           float: left;
           height: 50px;
           width: calc(100vw - 300px - 80px - 100px); //画面max - sidebar - chatの余白×2 - Submitボタン
+          padding: 0 10px;
         }
         &__mask__image {
           .fa.fa-picture-o.icon {
@@ -43,7 +44,7 @@
             height: 55px;
             width: 100px;
             position: absolute;
-            left: 1215px;
+            left: 1235px;
           }
         }
       }

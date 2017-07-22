@@ -31,13 +31,17 @@
     height: calc(100vh - 96px - 90px); //画面max - header - footer
     width: calc(100vw - 300px);
     &__messages__body {
-      position: relative;
+      .main__chat__messages__body__header {
+        margin: 46px 40px 0;
+      }
       &-user-name {
+        display: inline;
         font-weight: bold;
         margin: 46px 0 10px 40px;
       }
       &-date {
         color: #999999;
+        display: inline;
         font-size: 12px;
         position: absolute;
         left: 100px;
@@ -46,7 +50,7 @@
       &-content {
         color: #434A54;
         font-size: 14px;
-        margin: 0 0 0 40px;
+        margin: 0 40px 0;
       }
     }
   }
