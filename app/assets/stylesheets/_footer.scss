@@ -5,6 +5,7 @@
     height: 90px;
     width: 300px;
   }
+  //groupのindexのscss
   &__chat-group {
     background-color: $mainWhiteColor;
     float: left;
@@ -31,11 +32,8 @@
           .fa.fa-picture-o.icon {
             position: absolute;
             top: 15px;
-            left: 1170px;
+            left: 1180px;
             font-size: 20px;
-          }
-          .hidden.js-file{
-            display: none;
           }
           &__submit {
             background-color: $mainBlueColor;
@@ -50,4 +48,7 @@
       }
     }
   }
+}
+#message_image[type="file"]{
+  display: none;
 }

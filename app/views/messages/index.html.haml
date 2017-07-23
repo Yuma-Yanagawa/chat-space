@@ -30,12 +30,13 @@
       .main__chat__messages
         .main__chat__messages__body
           = render @messages
-.footer__sidebar
+.footer
+  .footer__sidebar
   .footer__chat
     .footer__chat__form
-    = form_for [@group, @message], html: {class: "footer__chat__form__js-form"} do |f|
-      = f.text_field :body, class: "footer__chat__form__js-form__message", placeholder: "type a message"
-      %label.footer__chat__form__js-form__mask__image
-        = f.file_field :image, class: "hidden js-file", id: "message_image"
-        %i.fa.fa-picture-o.icon
-        = f.submit 'Send', class: "footer__chat__form__js-form__mask__image__submit"
+      = form_for [@group, @message], html: {class: "footer__chat__form__js-form"} do |f|
+        = f.text_field :body, class: "footer__chat__form__js-form__message", placeholder: "type a message"
+        %label.footer__chat__form__js-form__mask__image
+          %i.fa.fa-picture-o.icon
+          = f.file_field :image, class: "hidden js-file", id: "message_image"
+          = f.submit 'Send', class: "footer__chat__form__js-form__mask__image__submit"
