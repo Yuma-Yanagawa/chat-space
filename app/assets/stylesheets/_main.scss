@@ -4,6 +4,7 @@
     float: left;
     height: calc(100vh - 96px - 90px); //画面max - header - footer
     width: 300px;
+    overflow: scroll;
     &__group {
       color: $mainWhiteColor;
       a {
@@ -30,6 +31,7 @@
     float: left;
     height: calc(100vh - 96px - 90px); //画面max - header - footer
     width: calc(100vw - 300px);
+    overflow: scroll;
     &__messages__body {
       .main__chat__messages__body__header {
         margin: 46px 40px 0;
