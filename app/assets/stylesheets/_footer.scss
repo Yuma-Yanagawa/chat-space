@@ -5,6 +5,7 @@
     height: 90px;
     width: 300px;
   }
+  //groupのindexのscss
   &__chat-group {
     background-color: $mainWhiteColor;
     float: left;
@@ -25,16 +26,14 @@
           float: left;
           height: 50px;
           width: calc(100vw - 300px - 80px - 100px); //画面max - sidebar - chatの余白×2 - Submitボタン
+          padding: 0 10px;
         }
         &__mask__image {
           .fa.fa-picture-o.icon {
             position: absolute;
             top: 15px;
-            left: 1170px;
+            left: 1180px;
             font-size: 20px;
-          }
-          .hidden.js-file{
-            display: none;
           }
           &__submit {
             background-color: $mainBlueColor;
@@ -43,10 +42,13 @@
             height: 55px;
             width: 100px;
             position: absolute;
-            left: 1215px;
+            left: 1235px;
           }
         }
       }
     }
   }
+}
+#message_image[type="file"]{
+  display: none;
 }
