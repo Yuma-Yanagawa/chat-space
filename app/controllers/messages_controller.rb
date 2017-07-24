@@ -1,16 +1,12 @@
 class MessagesController < ApplicationController
+  before_action :sets_instance, only: [:index, :create]
+
   def index
-    @group = Group.find(params[:group_id])
-    @groups = current_user.groups
-    @message = Message.new
-    @messages = @group.messages
   end
 
   def create
-    @group = Group.find(params[:group_id])
-    @groups = current_user.groups
+    binding.pry
     @message = Message.new(message_params)
-    @messages = @group.messages
     if @message.save
       redirect_to group_messages_path(@group), notice: "メッセージを送信しました"
     else
@@ -22,5 +18,12 @@ class MessagesController < ApplicationController
    private
    def message_params
      params.require(:message).permit(:body, :image).merge(group_id: params[:group_id], user_id: current_user.id)
+   end
+
+   def sets_instance
+     @group = Group.find(params[:group_id])
+     @groups = current_user.groups
+     @message = Message.new
+     @messages = @group.messages
    end
 end
