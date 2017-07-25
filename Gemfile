@@ -26,3 +26,7 @@ group :development do
   gem 'spring'
   gem 'listen', '~> 3.1.5'
 end
+
+group :test do
+  gem 'faker'
+end
