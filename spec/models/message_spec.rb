@@ -17,11 +17,11 @@ describe Message do
       expect(message).to be_valid
     end
     #
-    # it "is valid with a body, image" do
-    #   message = build(:message)
-    #   message.valid?
-    #   expect(message).to be_valid
-    # end
+    it "is valid with a body, image" do
+      message = build(:message)
+      message.valid?
+      expect(message).to be_valid
+    end
     #
     # it "is invalid without a body, image" do
     #   message = build(:message, body: "", image: "")
