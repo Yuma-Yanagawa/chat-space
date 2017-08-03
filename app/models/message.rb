@@ -8,7 +8,7 @@ class Message < ApplicationRecord
     if body.present? || image.present?
       return true
     else
-      return
+      return false
     end
   end
 end
