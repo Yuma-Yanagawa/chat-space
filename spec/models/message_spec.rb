@@ -27,17 +27,17 @@ describe Message do
       expect(message).not_to be_valid
     end
 
-    # it "is invalid without a group_id" do
-    #   message = build(:message, group_id: "")
-    #   message.valid?
-    #   expect(message.errors[:group_id]).to include("can't be blank")
-    # end
+    it "is invalid without a group_id" do
+      message = build(:message, group_id: nil)
+      message.valid?
+      expect(message).not_to be_valid
+    end
 
-    # it "is invalid without a user_id" do
-    #   message = create(:message, user_id: "")
-    #   message.valid?
-    #   expect(message.errors[:user_id]).to include("can't be blank")
-    # end
+    it "is invalid without a user_id" do
+      message = build(:message, user_id: nil)
+      message.valid?
+      expect(message).not_to be_valid
+    end
   end
 
 end
