@@ -5,6 +5,7 @@ describe Message do
 
     it "is valid with a body" do
       message = build(:message, image: nil)
+      binding.pry
       message.valid?
       expect(message).to be_valid
     end
