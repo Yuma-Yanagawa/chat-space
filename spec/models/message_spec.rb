@@ -5,19 +5,16 @@ describe Message do
     context 'valid' do
       it "is valid with a body" do
         message = build(:message, image: nil)
-        message.valid?
         expect(message).to be_valid
       end
 
       it "is valid with a image" do
         message = build(:message, body: nil)
-        message.valid?
         expect(message).to be_valid
       end
 
       it "is valid with a body, image" do
         message = build(:message)
-        message.valid?
         expect(message).to be_valid
       end
     end
