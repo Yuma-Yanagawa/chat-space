@@ -1,7 +1,6 @@
 FactoryGirl.define do
 
   factory :message do
-    id         1
     body       "test_message1"
     image      { Rack::Test::UploadedFile.new Rails.root.join('spec/fixtures/image.jpg'), 'image/jpg' }
     group_id   1
