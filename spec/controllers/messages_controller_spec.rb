@@ -22,7 +22,6 @@ describe MessagesController, type: :controller do
 
         it "is assigns sg @message" do
           blank_message = Message.new
-          get :index, params: { group_id: group }
           expect(assigns(:message)).to be_a_new(Message)
         end
 
