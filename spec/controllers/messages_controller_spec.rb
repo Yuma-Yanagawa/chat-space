@@ -9,16 +9,15 @@ describe MessagesController, type: :controller do
     context "when user loged in" do
       before do
         login_user user
+        get :index, group_id: group
       end
         it "assigns the requested group to @group" do
-          get :index, group_id: group
           expect(assigns(:group)).to eq group
         end
 
         it "is assings pl @groups has current_user.groups" do
-          groups = create_list(:group, 3)
-          get :index, params: { group_id: groups.first.id }
           groups = user.groups
+          get :index, params: { group_id: groups.first.id }
           expect(assigns(:groups)).to eq groups
         end
 
@@ -29,13 +28,12 @@ describe MessagesController, type: :controller do
         end
 
         it "is assigns pl @messages has current_group.users" do
-          messages = create_list(:message, 3, user_id: user.id, group_id: group.id)
+          messages = group.messages
           get :index, params: { group_id: group }
           expect(assigns(:messages)).to match(messages)
         end
 
         it "renders the :index template" do
-          get :index, group_id: group.id
           expect(response).to render_template :index
         end
     end
@@ -54,9 +52,23 @@ describe MessagesController, type: :controller do
         before do
           login_user user
         end
-        subject {Proc.new { post :create, params: { message: attributes_for(:message), group_id: group } }}
+        subject {
+          Proc.new { post :create, params: { message: attributes_for(:message), group_id: group } }
+        }
+
+        it "assigns the requested group to @group" do
+          subject.call
+          expect(assigns(:group)).to eq group
+        end
+
+        it "assigns the requested groups to @groups" do
+          subject.call
+          groups = user.groups
+          expect(assigns(:groups)).to eq groups
+        end
+
         it "assigns the requested message to @message" do
-          expect{ post :create, params: { message: attributes_for(:message, { body: 'hello' }), group_id: group.id } }.to change(Message, :count).by(1)
+          expect{ subject.call }.to change(Message, :count).by(1)
         end
 
         it "redirect_to group_messages_path" do
@@ -64,13 +76,15 @@ describe MessagesController, type: :controller do
           expect(response).to redirect_to group_messages_path
         end
         it 'sets flash[:notice]' do
-          post :create, params: { group_id: group, message: attributes_for(:message) }
-          expect(flash[:notice]).to be_present
+          subject.call
+          expect(flash[:notice]).to eq 'メッセージを送信しました'
         end
       end
 
       context "message is invalid" do
-        subject {Proc.new { post :create, params: { message: attributes_for(:message), group_id: group } }}
+        subject {
+          Proc.new { post :create, params: { message: attributes_for(:message, body:nil, image:nil), group_id: group } }
+        }
         it "assigns a newly created but unsaved message as @message" do
           expect{subject.call}.not_to change(Message, :count)
         end
@@ -78,6 +92,11 @@ describe MessagesController, type: :controller do
         it 'renders the :index template' do
            subject.call
            expect(response).to redirect_to new_user_session_path
+        end
+
+        it 'sets flash[:notice]' do
+          subject.call
+          expect(flash[:alert]).to eq 'ログインまたは登録が必要です'
         end
       end
     end
