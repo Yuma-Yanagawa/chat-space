@@ -17,19 +17,17 @@ describe MessagesController, type: :controller do
 
         it "is assings pl @groups has current_user.groups" do
           groups = user.groups
-          get :index, params: { group_id: groups.first.id }
           expect(assigns(:groups)).to eq groups
         end
 
         it "is assigns sg @message" do
           blank_message = Message.new
           get :index, params: { group_id: group }
-          expect(assigns(:message).attributes).to eq(blank_message.attributes)
+          expect(assigns(:message)).to be_a_new(Message)
         end
 
         it "is assigns pl @messages has current_group.users" do
           messages = group.messages
-          get :index, params: { group_id: group }
           expect(assigns(:messages)).to match(messages)
         end
 
@@ -94,7 +92,7 @@ describe MessagesController, type: :controller do
            expect(response).to redirect_to new_user_session_path
         end
 
-        it 'sets flash[:notice]' do
+        it 'sets flash[:alert]' do
           subject.call
           expect(flash[:alert]).to eq 'ログインまたは登録が必要です'
         end
