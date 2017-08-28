@@ -21,7 +21,6 @@ describe MessagesController, type: :controller do
         end
 
         it "is assigns sg @message" do
-          blank_message = Message.new
           expect(assigns(:message)).to be_a_new(Message)
         end
 
