@@ -14,6 +14,7 @@ gem 'pry-rails'
 gem 'erb2haml'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'rails-controller-testing'
 
 group :development, :test do
   gem 'byebug'

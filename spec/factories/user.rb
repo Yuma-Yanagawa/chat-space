@@ -1,13 +1,13 @@
 FactoryGirl.define do
 
   factory :user do
-    id                 { Faker::Number.digit }
+    id                 11
     email              { Faker::Internet.email }
-    password           { Faker::Number.digit }
+    password           { Faker::Number.number(6) }
     name               { Faker::Name.name }
 
     after(:create) do |user|
-      create(:group_user, user: user, group: create(:group))
+      create(:groups_user, user: user, group: create(:group))
     end
   end
 end
