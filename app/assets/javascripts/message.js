@@ -30,10 +30,9 @@ $(function() {
       contentType: false
     })
     .done(function(data){
-      var html = buildHTML(data){
+      var html = buildHTML(data)
         $('.main__chat__messages__body-content').append(html)
         $('.footer__chat__form__js-form__message').val('')
-      }
     })
     .fail(function(){
      alert('メッセージを入力してください');
