@@ -19,6 +19,7 @@ $(function() {
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
+    console.log(this);
     var url =$(this).attr('action')
     $.ajax({
       url: url,
@@ -36,6 +37,6 @@ $(function() {
     })
     .fail(function(){
      alert('メッセージを入力してください');
-   })
+   });
   });
 });
