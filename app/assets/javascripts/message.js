@@ -12,6 +12,10 @@ $(function() {
                 </p>
                 </div>`
   }
+  function bottomScroll() {
+      $('.main__chat__messages__body').scrollTop( $('.main__chat__messages__body-content').height());
+    }
+
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -30,5 +34,8 @@ $(function() {
         $('.footer__chat__form__js-form__message').val('')
       }
     })
+    .fail(function(){
+     alert('メッセージを入力してください');
+   })
   });
 });
