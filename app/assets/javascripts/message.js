@@ -14,18 +14,19 @@ $(function() {
     return html;
   }
 
-  function flash() {
+  function flashMessage() {
   var html =
-    `<p class="alert-notice">メッセージを送信しました</p>`
-  $('.alert').append(html);
-  $('.alert-notice').fadeIn(500).fadeOut(2000); //指定したクラスを0.5秒でfade inさせて、2秒でfade outさせる。
+    `<p class="header__flashmessage">メッセージを送信しました</p>`
+  $('.flash__message').append(html);
+  console.log(html);
+  $('.header__flashmessage').fadeIn(2000).fadeOut(1000); //指定したクラスを0.5秒でfade inさせて、2秒でfade outさせる。
   setTimeout(function(){
-   $('.alert-notice').remove();
+   $('.header__flashmessage').remove();
   },2500); //指定のクラス自体をremoveする。
 }
 
   function bottomScroll() {
-      $('.main__chat__messages__body__header').scrollTop( $('.main__chat__messages__body-content').height());
+    $('.main__chat').animate({scrollTop: $('.main__chat')[0].scrollHeight},  'fast');
     }
 
   $('#new_message').on('submit', function(e){
@@ -42,9 +43,10 @@ $(function() {
     })
     .done(function(data){
       var html = buildHTML(data)
-      console.log(html);
-      $('.main__chat__messages__body').append(html);
+      $('.main__chat__messages__body-list').append(html);
       $('.footer__chat__form__js-form__message').val('');
+      $(".footer__chat__form__js-form__mask__image__submit").prop('disabled', false);
+      flashMessage();
       bottomScroll();
     })
     .fail(function(){
