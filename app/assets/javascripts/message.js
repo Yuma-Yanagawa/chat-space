@@ -8,6 +8,7 @@ $(function() {
                   ${message.day}
                   </div>
                   <p class="main__chat__messages__body-content">
+                  ${if(message.body && message.image)}
                     ${message.text}
                     </p>
                     </div>`
@@ -18,7 +19,6 @@ $(function() {
   var html =
     `<p class="header__flashmessage">メッセージを送信しました</p>`
   $('.flash__message').append(html);
-  console.log(html);
   $('.header__flashmessage').fadeIn(2000).fadeOut(1000); //指定したクラスを0.5秒でfade inさせて、2秒でfade outさせる。
   setTimeout(function(){
    $('.header__flashmessage').remove();
