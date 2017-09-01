@@ -1,18 +1,52 @@
 $(function() {
   function buildHTML(message){
-    var html = `<div class="main__chat__messages__body__header">
-                  <div class="main__chat__messages__body-user-name">
-                  ${message.user_name}
-                  </div>
-                  <div class="main__chat__messages__body-date">
-                  ${message.day}
-                  </div>
-                  <p class="main__chat__messages__body-content">
-                  ${if(message.body && message.image)}
-                    ${message.text}
-                    </p>
-                    </div>`
-    return html;
+    console.log(message);
+    if(message.body && message.image.url) {
+      var html = `<div class="main__chat__messages__body__header">
+                    <div class="main__chat__messages__body-user-name">
+                    ${message.user_name}
+                    </div>
+                    <div class="main__chat__messages__body-date">
+                    ${message.day}
+                    </div>
+                    <p class="main__chat__messages__body-content">
+                      ${message.image.url}
+                      ${message.body}
+                      </p>
+                      </div>`
+      return html;
+    }
+    else if(message.body) {
+      var html = `<div class="main__chat__messages__body__header">
+                    <div class="main__chat__messages__body-user-name">
+                    ${message.user_name}
+                    </div>
+                    <div class="main__chat__messages__body-date">
+                    ${message.day}
+                    </div>
+                    <p class="main__chat__messages__body-content">
+                      ${message.body}
+                      </p>
+                      </div>`
+      return html;
+    }
+    else if(message.image) {
+      var html = `<div class="main__chat__messages__body__header">
+                    <div class="main__chat__messages__body-user-name">
+                    ${message.user_name}
+                    </div>
+                    <div class="main__chat__messages__body-date">
+                    ${message.day}
+                    </div>
+                    <p class="main__chat__messages__body-content">
+                      ${message.image.url}
+                      </p>
+                      </div>`
+      return html;
+    }
+    else {
+      alert('メッセージを入力してください')
+    }
   }
 
   function flashMessage() {
