@@ -1,5 +1,14 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
+  def index
+    @users = User.where('name LIKE(?)', "%#{params[:name]}%")
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
+
   def edit
   end
 
