@@ -1,3 +1,4 @@
+.flash__message
 %header
   .header
     .header__sidebar
@@ -29,7 +30,8 @@
     .main__chat
       .main__chat__messages
         .main__chat__messages__body
-          = render @messages
+          .main__chat__messages__body-list
+            = render @messages
 %footer
   .footer
     .footer__sidebar

@@ -33,27 +33,31 @@
     width: calc(100vw - 300px);
     overflow: scroll;
     &__messages__body {
+      .main__chat__messages__body-list {
+        height: calc(100vh - 96px - 40px);
+        width: calc(100vw - 300px);
+        padding: 0 0 0 40px;
       .main__chat__messages__body__header {
-        margin: 46px 40px 0;
+        margin: 46px 40px 0 0;
       }
-      &-user-name {
-        display: inline;
-        font-weight: bold;
-        margin: 46px 0 10px 40px;
-      }
-      &-date {
-        color: #999999;
-        display: inline;
-        font-size: 12px;
-        position: absolute;
-        left: 100px;
-        bottom: 35px;
-      }
-      &-content {
-        color: #434A54;
-        font-size: 14px;
-        margin: 0 40px 0;
-        padding: 10px 0 0;
+        .main__chat__messages__body-user-name {
+          display: inline;
+          font-weight: bold;
+          margin: 46px 0 10px 0px;
+        }
+        .main__chat__messages__body-date {
+          color: #999999;
+          display: inline;
+          font-size: 12px;
+          left: 100px;
+          bottom: 35px;
+        }
+        .main__chat__messages__body-content {
+          color: #434A54;
+          font-size: 14px;
+          margin: 0 40px 0 0;
+          padding: 10px 0 0;
+        }
       }
     }
   }
