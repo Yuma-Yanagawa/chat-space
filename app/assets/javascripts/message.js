@@ -1,6 +1,5 @@
 $(function() {
   function buildHTML(message){
-    console.log(message);
     if(message.body && message.image.url) {
       var html = `<div class="main__chat__messages__body__header">
                     <div class="main__chat__messages__body-user-name">
@@ -45,19 +44,19 @@ $(function() {
       return html;
     }
     else {
-      alert('メッセージを入力してください')
+      alert('メッセージを入力してください');
     }
   }
 
   function flashMessage() {
-  var html =
-    `<p class="header__flashmessage">メッセージを送信しました</p>`
-  $('.flash__message').append(html);
-  $('.header__flashmessage').fadeIn(2000).fadeOut(1000); //指定したクラスを0.5秒でfade inさせて、2秒でfade outさせる。
-  setTimeout(function(){
-   $('.header__flashmessage').remove();
-  },2500); //指定のクラス自体をremoveする。
-}
+    var html =
+      `<p class="header__flashmessage">メッセージを送信しました</p>`
+    $('.flash__message').append(html);
+    $('.header__flashmessage').fadeIn(2000).fadeOut(1000); //指定したクラスを0.5秒でfade inさせて、2秒でfade outさせる。
+    setTimeout(function(){
+     $('.header__flashmessage').remove();
+   },3000); //指定のクラス自体をremoveする。
+ }
 
   function bottomScroll() {
     $('.main__chat').animate({scrollTop: $('.main__chat')[0].scrollHeight},  'fast');
@@ -66,7 +65,7 @@ $(function() {
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
-    var url =$(this).attr('action')
+    var url =$(this).attr('action');
     $.ajax({
       url: url,
       type: "POST",
@@ -76,7 +75,7 @@ $(function() {
       contentType: false
     })
     .done(function(data){
-      var html = buildHTML(data)
+      var html = buildHTML(data);
       $('.main__chat__messages__body-list').append(html);
       $('.footer__chat__form__js-form__message').val('');
       $(".footer__chat__form__js-form__mask__image__submit").prop('disabled', false);
