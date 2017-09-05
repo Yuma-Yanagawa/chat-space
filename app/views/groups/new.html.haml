@@ -29,6 +29,7 @@
             %p.chat-group-user__name
             = current_user.name
           = render partial: "groups/users", collection: @users_not_current
+          - binding.pry
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
       .chat-group-form__field--right
