@@ -19,7 +19,9 @@
           %ul.header__chat__left__title__members
             Member :
             %li.header__chat__left__title__members-member
-              = current_user.name
+              - @group.users.each do |user|
+                = "#{user.name},"
+
       .header__chat__right
         = link_to edit_group_path(@group), class: 'header__chat__right__button' do
           %p Edit
