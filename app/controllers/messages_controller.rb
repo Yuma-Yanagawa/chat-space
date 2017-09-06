@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   def index
     respond_to do |format|
       format.html
-      format.json
+      format.json {@reload_message = @group.messages.where('id > ?', params[:last_message_id])}
     end
   end
 

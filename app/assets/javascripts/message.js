@@ -60,25 +60,26 @@ $(function() {
 
   function bottomScroll() {
     $('.main__chat').animate({scrollTop: $('.main__chat')[0].scrollHeight},  'fast');
-    }
+  }
 
   var auto_reload = setInterval(function autoReload(){
+    var last_message_id = $(".main__chat__messages__body__header:last-child").data("message-id");
     var url = $(location).attr('pathname');
     var data = $('.main__chat__messages__body__header').last().data('message-id');
     $.ajax({
       url: url,
       type: 'GET',
-      data: { id: data},
+      data: { last_message_id: last_message_id },
       dataType: 'json'
     })
     .done(function(messages) {
       messages.forEach(function(message) {
-      var html = buildHTML(message);
-      $('.main__chat__messages__body-list').append(html);
-      bottomScroll();
+        var html = buildHTML(message);
+        $('.main__chat__messages__body-list').append(html);
+        bottomScroll();
       });
     });
-  }, 10000);
+  }, 1000);
 
   $('#new_message').on('submit', function(e){
     e.preventDefault();
