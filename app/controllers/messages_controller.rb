@@ -2,6 +2,10 @@ class MessagesController < ApplicationController
   before_action :sets_instance, only: [:index, :create]
 
   def index
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create
