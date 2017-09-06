@@ -62,6 +62,29 @@ $(function() {
     $('.main__chat').animate({scrollTop: $('.main__chat')[0].scrollHeight},  'fast');
     }
 
+  function autoReload(){
+    var url = $(location).attr('pathname');
+    var data = $('.main__chat__messages__body__header').last().data('message-id');
+    $.ajax({
+      url: url,
+      type: 'GET',
+      data: { id: data},
+      dataType: 'json'
+    })
+    .done(function(messages) {
+      messages.forEach(function(message) {
+      var html = buildHTML(message);
+      $('.main__chat__messages__body-list').append(html);
+      bottomScroll();
+      });
+    });
+  }
+
+  if (document.location.href.match("/messages") {
+  setInterval(function(){
+    autoReload();
+  }, 10000)};
+
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
