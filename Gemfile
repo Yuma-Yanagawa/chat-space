@@ -21,6 +21,11 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
 end
 
 group :development do
