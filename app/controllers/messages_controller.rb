@@ -2,6 +2,10 @@ class MessagesController < ApplicationController
   before_action :sets_instance, only: [:index, :create]
 
   def index
+    respond_to do |format|
+      format.html
+      format.json {@reload_message = @group.messages.where('id > ?', params[:last_message_id])}
+    end
   end
 
   def create
