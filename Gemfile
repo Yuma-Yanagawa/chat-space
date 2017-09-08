@@ -16,6 +16,7 @@ gem 'erb2haml'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'rails-controller-testing'
+gem 'fog'
 
 group :development, :test do
   gem 'byebug'
